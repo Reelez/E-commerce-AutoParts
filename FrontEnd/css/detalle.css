@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('../../img/fondoinventario.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+/* 🌟 Header premium */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    margin: 20px auto;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-left .usuario {
+    font-size: 1rem;
+    color: #FF7043;
+    font-weight: bold;
+}
+
+.header-center {
+    flex: 1;
+    text-align: center;
+}
+
+.header-center h1 {
+    margin: 0;
+    color: #FF7043;
+    font-size: 1.8rem;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-logout {
+    background-color: #FF7043;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: #E64A19;
+}
+
+.cart-btn {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    color: #FF7043;
+    padding: 8px 15px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-btn:hover {
+    background: #FF7043;
+    color: #fff;
+}
+
+.cart-btn #cart-count {
+    background: #E64A19;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8rem;
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    color: #fff;
+}
+
+/* 📦 Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* 📦 Detalle de la pieza */
+.detalle-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    align-items: center;
+}
+
+.detalle-img img {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.detalle-info {
+    flex: 1;
+}
+
+.detalle-info h2 {
+    margin-top: 0;
+    color: #FF7043;
+}
+
+.detalle-info p {
+    margin: 8px 0;
+    font-size: 1rem;
+}
+
+.detalle-info strong {
+    color: #FF7043;
+}
+
+.btn-volver {
+    display: inline-block;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.btn-volver:hover {
+    background-color: #0056b3;
+}
+
+.add-cart-btn {
+    background-color: #28A745;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.add-cart-btn:hover {
+    background-color: #218838;
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border-radius: 6px;
+    border: none;
+    text-align: center;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .header-right {
+        justify-content: center;
+    }
+    .detalle-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}

@@ -1,0 +1,106 @@
+/* Fondo con imagen del carro y filtro oscuro */
+body.login-body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('../../img/fondologin.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor principal */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Tarjeta de login con glassmorphism */
+.login-card {
+    background: rgba(255, 255, 255, 0.15); /* blanco semi-transparente */
+    backdrop-filter: blur(15px);          /* efecto vidrio */
+    -webkit-backdrop-filter: blur(15px);  /* soporte Safari/Chrome */
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* borde sutil */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    padding: 40px 30px;
+    width: 350px;
+    text-align: center;
+}
+
+/* Título */
+.login-card h2 {
+    margin-bottom: 25px;
+    color: #FF7043;
+    font-size: 1.8em;
+}
+
+/* Etiquetas */
+.login-card label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    color: #fff; /* texto blanco para contraste */
+    font-weight: 600;
+}
+
+/* Inputs */
+.login-card input {
+    display: block;              /* asegúrate que cada input esté en bloque */
+    width: 100%;                 /* ocupa todo el ancho de la tarjeta */
+    max-width: 100%;             /* no sobresale */
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    margin: 10px 0 20px 0;       /* margen uniforme */
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    box-sizing: border-box;      /* evita que el padding altere el tamaño */
+}
+
+/* Botón */
+.login-card button {
+    display: block;              /* centra en el contenedor */
+    width: 100%;                 /* ocupa todo el ancho */
+    max-width: 100%;             /* no sobresale */
+    padding: 12px;
+    background-color: #FF7043;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.login-card button:hover {
+    background-color: #E64A19;
+}
+
+.btn-registro {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    background-color: transparent;
+    color: #FF7043;
+    border: 2px solid #FF7043;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-registro:hover {
+    background-color: #FF7043;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}

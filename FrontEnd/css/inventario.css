@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #0077cc;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.8rem;
+}
+
+h1::before {
+    content: "📦";
+    font-size: 1.6rem;
+}
+
+.inventory-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.inventory-form input,
+.inventory-form textarea,
+.inventory-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    appearance: none; /* elimina la flecha nativa */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px; /* espacio para la flecha */
+}
+
+.inventory-form select:focus {
+    border-color: #0077cc;
+    box-shadow: 0 0 5px rgba(0, 119, 204, 0.5);
+    outline: none;
+}
+
+
+.inventory-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.btn-primary {
+    padding: 12px;
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #005fa3;
+    transform: translateY(-2px);
+}
+
+.btn-primary::before {
+    content: "➕";
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.inventory-table th,
+.inventory-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.inventory-table th {
+    background-color: #0077cc;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.inventory-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.inventory-table tr:hover {
+    background-color: #eef3f7;
+    transition: background-color 0.3s ease;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card-link {
+    text-decoration: none; /* Quita el subrayado */
+    color: inherit;        /* Hereda color del contenedor */
+    display: block;        /* Hace que ocupe todo el espacio */
+}
+
+.card-link:visited {
+    color: inherit; /* Quita color morado de enlaces visitados */
+}

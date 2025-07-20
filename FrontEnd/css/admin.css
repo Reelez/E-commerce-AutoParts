@@ -1,0 +1,225 @@
+/* ADMIN PANEL STYLES */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url('../../img/fondodash.jpg') no-repeat center center fixed;
+background-size: cover;
+
+    color: #fff;
+}
+
+
+
+/* Navbar glassmorphism */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #fff;
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #FF7043;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navbar-right span {
+    font-size: 1rem;
+    color: #fff;
+}
+
+/* Botón Cerrar Sesión premium */
+.btn-logout {
+    background-color: #FF7043;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: #E64A19;
+    transform: scale(1.05);
+}
+
+/* Main container */
+.main-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.main-container h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #FF7043;
+    text-align: center;
+}
+
+/* Table container with glassmorphism */
+.table-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    overflow-x: auto;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #FF7043;
+    backdrop-filter: blur(5px);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Action buttons premium */
+.action-btn {
+    background-color: #FF7043;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-btn:hover {
+    background-color: #E64A19;
+    transform: scale(1.05);
+}
+
+/* Texto general en blanco */
+body, h1, h2, h3, p {
+    color: #fff;
+}
+
+/* Enlaces premium */
+a {
+    color: #FF7043;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #FFA07A; /* tono más claro al pasar mouse */
+}
+
+/* Encabezados destacados */
+h1, h2 {
+    color: #FF7043;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+/* Texto en la navbar */
+.navbar-right span {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Botón “Cerrar Sesión” mantiene estilo */
+.btn-logout {
+    background-color: #FF7043;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: #E64A19;
+    transform: scale(1.05);
+}
+
+.welcome-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 40px;
+    max-width: 300px;
+    width: 280px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 80px; /* deja espacio para la navbar */
+    left: 30px;
+    bottom: 30px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.dashboard-main {
+    margin-left: 350px; /* da espacio para el sidebar */
+    padding: 20px;
+}
+
+.mini-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mini-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.mini-card h3 {
+    margin: 0 0 5px 0;
+    color: #FF7043;
+}
+
+.mini-card p {
+    margin: 0;
+    color: #f1f1f1;
+    font-size: 0.95rem;
+}
+
