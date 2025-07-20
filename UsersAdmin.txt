@@ -1,0 +1,8 @@
+-- Insertar usuario administrador
+INSERT INTO usuarios (nombre, usuario, password, rol)
+VALUES (
+    'Administrador General', 
+    'admin', 
+    '$2y$10$F9KqP1FiREjG.TMXidbNXumHObQk2ClV87Wx8H6hJ0t3bjs4HxXvi', -- root2514 (hash)
+    'admin'
+);

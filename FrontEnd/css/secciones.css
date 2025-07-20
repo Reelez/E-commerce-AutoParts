@@ -1,0 +1,229 @@
+/* 🌐 Layout general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+}
+
+/* 🔥 Título principal */
+h1 {
+    text-align: center;
+    color: #0077cc;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.8rem;
+}
+
+h1::before {
+    content: "📦";
+    font-size: 1.6rem;
+}
+
+/* 📂 Sección de filtros */
+.filter-section {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.filter-section label {
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+/* 🔘 Select moderno */
+select {
+    padding: 8px 12px;
+    border: 2px solid #0077cc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus {
+    border-color: #005fa3;
+    box-shadow: 0 0 8px rgba(0, 95, 163, 0.4);
+    outline: none;
+}
+
+/* 📋 Tabla de inventario */
+.inventory-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.inventory-table th,
+.inventory-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.inventory-table th {
+    background-color: #0077cc;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.inventory-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.inventory-table tr:hover {
+    background-color: #eef3f7;
+    transition: background-color 0.3s ease;
+}
+
+.fila-desactivada {
+    background-color: #f5c6cb !important;
+    color: #721c24;
+}
+
+/* 💎 Chips de estado */
+.badge-activo {
+    background-color: #28a745;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.badge-inactivo {
+    background-color: #6c757d;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* 🎯 Botones Activar/Desactivar */
+button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+/* Estilo base para botones */
+button.activar,
+button.desactivar {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #000; /* texto negro por defecto */
+    background-color: #e0e0e0; /* gris claro */
+}
+
+/* Hover estado */
+button.activar:hover {
+    background-color: #81c784; /* verde pastel hover */
+    color: #000;
+}
+
+button.desactivar:hover {
+    background-color: #ef9a9a; /* rojo pastel hover */
+    color: #000;
+}
+
+/* Seleccionado estado */
+button.activar.selected {
+    background-color: #00ff00; /* verde neón seleccionado */
+    color: #fff;
+}
+
+button.desactivar.selected {
+    background-color: #ff0000; /* rojo neón seleccionado */
+    color: #fff;
+}
+
+.notificacion {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745; /* verde éxito */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-20px);
+    z-index: 1000;
+}
+.notificacion.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.filter-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-section label {
+    font-weight: 500;
+    color: #333;
+}
+
+.filter-section input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 250px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-section input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    outline: none;
+}
+
+.filter-section select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-section select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    outline: none;
+}
