@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-error_reporting(E_ERROR | E_PARSE);
+error_reporting(E_ERROR | E_PARSE);  // Para suprimir los errores de PHP, pero puedes habilitarlo para debugging.
 
 require_once '../BackEnd/CRUD/inventarioCRUD.php';
 require_once '../Validations/validarDatos.php';
@@ -9,20 +9,12 @@ require_once '../BackEnd/proteger.php';
 $inventario = new InventarioCRUD();
 
 switch ($_SERVER['REQUEST_METHOD']) {
-    case 'GET':
-        try {
-            $partes = $inventario->obtenerPartesActivas();
-            echo json_encode($partes);
-        } catch (Exception $e) {
-            echo json_encode(['success' => false, 'error' => 'Error al obtener partes: ' . $e->getMessage()]);
-        }
-        break;
-
     case 'POST':
         try {
-            $data = sanitizarArray($_POST);
+            // Recibimos los datos del formulario
+            $data = sanitizarArray($_POST);  // Sanitizamos la entrada del formulario
 
-            // Manejar subida de imagen
+            // Manejar la subida de imagen
             $imagenPath = '';
             if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
                 $uploadDir = realpath(__DIR__ . '/../img/');
@@ -41,6 +33,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 }
             }
 
+            // Intentar agregar el producto a la base de datos
             $success = $inventario->agregarParte(
                 $data['nombre_parte'],
                 $data['marca_auto'],
@@ -53,31 +46,17 @@ switch ($_SERVER['REQUEST_METHOD']) {
             );
 
             if ($success) {
-                echo json_encode(['success' => true]);
+                echo json_encode(['success' => true, 'message' => 'Parte agregada correctamente']);
             } else {
-                echo json_encode(['success' => false, 'error' => 'No se pudo guardar en la base de datos']);
+                echo json_encode(['success' => false, 'message' => 'Error al agregar parte']);
             }
         } catch (Exception $e) {
-            echo json_encode(['success' => false, 'error' => 'Excepción en POST: ' . $e->getMessage()]);
-        }
-        break;
-
-    case 'DELETE':
-        try {
-            parse_str(file_get_contents("php://input"), $del_vars);
-            $success = $inventario->eliminarParte($del_vars['id']);
-            if ($success) {
-                echo json_encode(['success' => true]);
-            } else {
-                echo json_encode(['success' => false, 'error' => 'No se pudo eliminar']);
-            }
-        } catch (Exception $e) {
-            echo json_encode(['success' => false, 'error' => 'Excepción en DELETE: ' . $e->getMessage()]);
+            echo json_encode(['success' => false, 'error' => 'Error al procesar la solicitud: ' . $e->getMessage()]);
         }
         break;
 
     default:
-        echo json_encode(['success' => false, 'error' => 'Método HTTP no soportado']);
+        echo json_encode(['success' => false, 'error' => 'Método no permitido']);
         break;
 }
 ?>

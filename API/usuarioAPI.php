@@ -1,42 +1,45 @@
 <?php
-require_once '../BackEnd/CRUD/usuariosCRUD.php';
-header('Content-Type: application/json');
+require_once '../BackEnd/CRUD/usuarioCRUD.php';
+header('Content-Type: application/json'); // Aseguramos que la respuesta sea JSON
 
 $crud = new UsuariosCRUD();
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        echo json_encode($crud->obtenerUsuarios());
+        try {
+            echo json_encode($crud->obtenerUsuarios());
+        } catch (Exception $e) {
+            echo json_encode(['success' => false, 'message' => 'Error al obtener usuarios: ' . $e->getMessage()]);
+        }
         break;
 
-        
-        case 'PUT':
-    parse_str(file_get_contents("php://input"), $put_vars);
-    $id = $put_vars['id'];
-    $nombre = $put_vars['nombre'];
-    $usuario = $put_vars['usuario'];
-    $rol = $put_vars['rol'];
-    $permisos = json_encode($put_vars['permisos']);
-
-    $password = $put_vars['password'] ?? null;
-    $hashedPassword = $password ? password_hash($password, PASSWORD_BCRYPT) : null;
-
-    $success = $crud->editarUsuario($id, $nombre, $usuario, $hashedPassword, $rol, $permisos);
-    echo json_encode(['success' => $success]);
-    break;
-
-
     case 'POST':
-        $usuario = $_POST['usuario'];
-        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $rol = $_POST['rol'];
-        $permisos = isset($_POST['permisos']) ? array_fill_keys($_POST['permisos'], true) : [];
-        $permisosJSON = json_encode($permisos);
+        try {
+            // Recibimos los datos del formulario
+            $nombre = $_POST['nombre'];
+            $usuario = $_POST['usuario'];
+            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+            $rol = $_POST['rol'];  // Valor del rol (admin o empleado)
+            
+            // Si no hay permisos seleccionados, los dejamos vacíos
+            $permisos = isset($_POST['permisos']) ? array_fill_keys($_POST['permisos'], true) : [];
+            $permisosJSON = json_encode($permisos);
 
-        if ($crud->agregarUsuario($usuario, $password, $rol, $permisosJSON)) {
-            echo json_encode(['success' => true, 'message' => 'Usuario creado correctamente']);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Error al crear usuario']);
+            // Verificamos que todos los campos necesarios estén presentes
+            if (empty($nombre) || empty($usuario) || empty($password) || empty($rol)) {
+                echo json_encode(['success' => false, 'message' => 'Faltan datos en el formulario']);
+                exit;
+            }
+
+            // Agregar usuario a la base de datos, pasando los permisos en JSON
+            if ($crud->agregarUsuario($nombre, $usuario, $password, $rol, $permisosJSON)) {
+                echo json_encode(['success' => true, 'message' => 'Usuario creado correctamente']);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Error al crear usuario']);
+            }
+        } catch (Exception $e) {
+            // Capturamos cualquier excepción y la mostramos como JSON
+            echo json_encode(['success' => false, 'message' => 'Excepción: ' . $e->getMessage()]);
         }
         break;
 
@@ -47,6 +50,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
         } else {
             echo json_encode(['success' => false, 'message' => 'Error al eliminar usuario']);
         }
+        break;
+
+    default:
+        echo json_encode(['success' => false, 'message' => 'Método no permitido']);
         break;
 }
 ?>

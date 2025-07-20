@@ -1,39 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
     cargarUsuarios();
 
-    document.getElementById('formUsuario').addEventListener('submit', e => {
-        e.preventDefault();
-        const form = new FormData(e.target);
+    // Evento del formulario para agregar usuario
+document.getElementById('formUsuario').addEventListener('submit', e => {
+    e.preventDefault();
+    const form = new FormData(e.target);
 
-        fetch('../../API/usuariosAPI.php', {
-            method: 'POST',
-            body: form
-        })
-        .then(res => res.json())
-        .then(data => {
-            alert(data.message);
-            cargarUsuarios();
+    fetch('../../API/usuarioAPI.php', {  // Ruta correcta a la API
+        method: 'POST',
+        body: form
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        if (data.success) {
             e.target.reset();
-        });
+            cargarUsuarios();
+        }
     });
 });
 
+
+
+});
+
+// Función para cargar los usuarios en la tabla
 function cargarUsuarios() {
-    fetch('../../API/usuariosAPI.php')
+    fetch('../../API/usuarioAPI.php') // Cambiar a la ruta correcta de la API
         .then(res => res.json())
         .then(data => {
             const tabla = document.getElementById('tablaUsuarios');
-            tabla.innerHTML = '';
+            tabla.innerHTML = ''; // Limpiar la tabla
+
             data.forEach(user => {
-                const permisos = Object.keys(user.permisos).filter(p => user.permisos[p]).join(', ');
+                // Obtener permisos de usuario
+                const permisos = Object.keys(user.permisos)
+                    .filter(p => user.permisos[p])
+                    .join(', ');
+
+                // Agregar fila con datos correctamente distribuidos
                 tabla.innerHTML += `
-                    <tr>
+                    <tr id="fila-${user.id}">
                         <td>${user.id}</td>
-                        <td>${user.usuario}</td>
+                        <td>${user.usuario}</td> <!-- Asegurarse de que el nombre del usuario esté aquí -->
                         <td>${user.rol}</td>
                         <td>${permisos}</td>
                         <td>
-                            <button onclick="eliminarUsuario(${user.id})">Eliminar</button>
+                            <button onclick="eliminarUsuario(${user.id})" class="btn-delete">Eliminar</button>
                         </td>
                     </tr>
                 `;
@@ -41,46 +54,21 @@ function cargarUsuarios() {
         });
 }
 
-function habilitarEdicion(id) {
-    document.querySelectorAll(`#fila-${id} input, #fila-${id} select`).forEach(el => {
-        el.disabled = false;
-    });
-    document.getElementById(`btn-editar-${id}`).style.display = 'none';
-    document.getElementById(`btn-guardar-${id}`).style.display = 'inline-block';
-}
 
-function guardarCambios(id) {
-    const fila = document.querySelector(`#fila-${id}`);
-    const nombre = fila.querySelector('.nombre').value;
-    const usuario = fila.querySelector('.usuario').value;
-    const password = fila.querySelector('.password').value; // opcional
-    const rol = fila.querySelector('.rol').value;
-    const permisos = Array.from(fila.querySelectorAll('.permiso:checked')).map(e => e.value);
 
-    fetch('../../API/usuariosAPI.php', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ id, nombre, usuario, password, rol, permisos })
-    })
-    .then(res => res.json())
-    .then(response => {
-        if (response.success) {
-            alert('Usuario actualizado');
-            cargarUsuarios();
-        } else {
-            alert('Error al actualizar');
-        }
-    });
-}
+
 
 
 function eliminarUsuario(id) {
     if (confirm('¿Seguro que quieres eliminar este usuario?')) {
-        fetch(`../../API/usuariosAPI.php?id=${id}`, { method: 'DELETE' })
+        fetch(`../../API/usuarioAPI.php?id=${id}`, { method: 'DELETE' }) // Ruta a la API de eliminar usuario
             .then(res => res.json())
             .then(data => {
-                alert(data.message);
-                cargarUsuarios();
-            });
+                alert(data.message); // Muestra el mensaje del servidor
+                if (data.success) {
+                    cargarUsuarios(); // Recarga la tabla de usuarios
+                }
+            })
+            .catch(error => alert('Error al eliminar usuario: ' + error));
     }
 }

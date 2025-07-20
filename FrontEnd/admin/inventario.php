@@ -12,16 +12,17 @@
         <form id="formInventario" class="inventory-form" enctype="multipart/form-data">
             <div class="form-group">
                 <select name="marca_auto" id="marca_auto" class="styled-select" required>
-                    <option value="">Seleccione Marca</option>
-                    <option value="Toyota">Toyota</option>
-                    <option value="Honda">Honda</option>
-                    <option value="Ford">Ford</option>
-                    <option value="Chevrolet">Chevrolet</option>
-                </select>
+    <option value="">Seleccione Marca</option>
+    <option value="Toyota">Toyota</option>
+    <option value="Honda">Honda</option>
+    <option value="Ford">Ford</option>
+    <option value="Chevrolet">Chevrolet</option>
+</select>
 
-                <select name="modelo_auto" id="modelo_auto" class="styled-select" required disabled>
-                    <option value="">Seleccione Modelo</option>
-                </select>
+<select name="modelo_auto" id="modelo_auto" class="styled-select" required disabled>
+    <option value="">Seleccione Modelo</option>
+</select>
+
             </div>
             <div class="form-group">
                 <input type="text" name="nombre_parte" placeholder="Nombre de la parte" required>
@@ -33,7 +34,7 @@
                 <textarea name="descripcion" placeholder="Descripción" rows="2"></textarea>
             </div>
             <div class="form-group">
-                <input type="file" name="imagen" accept="image/*">
+                <input type="file" name="imagen" accept="image/*" required>
             </div>
             <button type="submit" class="btn-primary">Agregar Parte</button>
         </form>

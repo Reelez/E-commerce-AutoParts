@@ -12,4 +12,14 @@ if (isset($requireAdmin) && $requireAdmin && $_SESSION['rol'] !== 'admin') {
     header('Location: ../FrontEnd/publico/inventario_publico.php');
     exit();
 }
+// Solo iniciar sesión si no está activa
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verificar si la sesión está activa
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ../FrontEnd/login.html'); // Redirige a login si no está autenticado
+    exit();
+}
 ?>

@@ -32,10 +32,6 @@ require_once '../../BackEnd/proteger.php';
                 <h3>Inventario</h3>
                 <p>Gestionar Inventario</p>
             </a>
-            <a href="movimientos.php" class="card">
-                <h3>Movimientos</h3>
-                <p>Gestionar Movimientos</p>
-            </a>
             <a href="secciones.php" class="card">
                 <h3>Secciones</h3>
                 <p>Gestionar Secciones</p>
