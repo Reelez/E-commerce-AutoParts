@@ -1,8 +1,15 @@
 <?php 
-require_once '../../BackEnd/proteger.php';
+require_once '../../BackEnd/proteger.php'; 
+require_once '../../BackEnd/CRUD/inventarioCRUD.php';
+
+// Crear instancia de InventarioCRUD para obtener las partes del inventario
+$inventario = new InventarioCRUD();
+$productos = $inventario->obtenerPartesActivas(); // Obtener solo los productos activos
+
 // Evitar warning si no existe 'nombre' en la sesión
 $nombreUsuario = isset($_SESSION['nombre']) ? htmlspecialchars($_SESSION['nombre']) : 'Invitado';
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,54 +32,34 @@ $nombreUsuario = isset($_SESSION['nombre']) ? htmlspecialchars($_SESSION['nombre
                     <?php echo isset($_SESSION['carrito']) ? array_sum($_SESSION['carrito']) : 0; ?>
                 </span>
             </a>
-            <a href="../../BackEnd/logout.php" class="btn-logout">Cerrar Sesión</a>
+            <a href="../../FrontEnd/admin/login.html" class="btn-logout">Cerrar Sesión</a>
         </div>
     </header>
 
     <!-- Contenido principal -->
     <div class="container">
-        <div id="gridProductos" class="grid-productos"></div>
-    </div>
-
-    <!-- JS para cargar productos -->
-    <script>
-    fetch('../../API/inventarioAPI.php')
-    .then(res => res.json())
-    .then(data => {
-        console.log('Datos recibidos:', data); // Agregar log para verificar los datos recibidos
-        const grid = document.getElementById('gridProductos');
-        grid.innerHTML = '';
-        
-        // Verificar si data es un array
-        if (Array.isArray(data)) {
-            data.forEach(p => {
-                grid.innerHTML += `
-                    <a href="detalle_pieza.php?id=${p.id}" class="card-link">
+        <div id="gridProductos" class="grid-productos">
+            <?php if (!empty($productos)): ?>
+                <?php foreach ($productos as $producto): ?>
+                    <a href="detalle_pieza.php?id=<?php echo $producto['id']; ?>" class="card-link">
                         <div class="card">
                             <div class="card-img">
-                                ${p.imagen ? `<img src="../../${p.imagen}" alt="${p.nombre_parte}">` : '<div class="no-img">Sin Imagen</div>'}
+                                <?php echo $producto['imagen'] ? "<img src='../../{$producto['imagen']}' alt='{$producto['nombre_parte']}'>" : '<div class="no-img">Sin Imagen</div>'; ?>
                             </div>
                             <div class="card-body">
-                                <h2>${p.nombre_parte}</h2>
-                                <p><strong>Marca:</strong> ${p.marca_auto}</p>
-                                <p><strong>Modelo:</strong> ${p.modelo_auto}</p>
-                                <p><strong>Año:</strong> ${p.anio}</p>
-                                <p><strong>Precio:</strong> $${parseFloat(p.costo).toFixed(2)}</p>
+                                <h2><?php echo $producto['nombre_parte']; ?></h2>
+                                <p><strong>Marca:</strong> <?php echo $producto['marca_auto']; ?></p>
+                                <p><strong>Modelo:</strong> <?php echo $producto['modelo_auto']; ?></p>
+                                <p><strong>Año:</strong> <?php echo $producto['anio']; ?></p>
+                                <p><strong>Precio:</strong> $<?php echo number_format($producto['costo'], 2); ?></p>
                             </div>
                         </div>
                     </a>
-                `;
-            });
-        } else {
-            // Si la respuesta no es un array, mostrar un error
-            grid.innerHTML = '<p>Error: La respuesta no es un array.</p>';
-        }
-    })
-    .catch(error => {
-        console.error('Error cargando inventario:', error);
-        document.getElementById('gridProductos').innerHTML = '<p>Error al cargar inventario.</p>';
-    });
-
-    </script>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No hay productos disponibles.</p>
+            <?php endif; ?>
+        </div>
+    </div>
 </body>
 </html>

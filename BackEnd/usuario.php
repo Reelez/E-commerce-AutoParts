@@ -10,18 +10,26 @@ class Usuario {
     }
 
     public function login($usuario, $password) {
-        $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE usuario = :usuario LIMIT 1");
-        $stmt->execute(['usuario' => $usuario]);
-        $user = $stmt->fetch();
+    $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE usuario = :usuario LIMIT 1");
+    $stmt->execute(['usuario' => $usuario]);
+    $user = $stmt->fetch();
 
-        if ($user && password_verify($password, $user['password'])) {
-            session_start();
-            $_SESSION['usuario'] = $user['usuario'];
-            $_SESSION['rol'] = $user['rol'];
-            return true;
+    if ($user && password_verify($password, $user['password'])) {
+        session_start();
+        $_SESSION['usuario'] = $user['usuario'];
+        $_SESSION['rol'] = $user['rol'];
+        
+        // Solo admin puede acceder a la gestión de usuarios
+        if ($_SESSION['rol'] !== 'admin') {
+            // Al hacer login con empleado, redirigir a una página sin opciones de administración
+            header('Location: dashboard.php');
+            exit();
         }
-        return false;
+        
+        return true;
     }
+    return false;
+}
 
     public function logout() {
         session_start();

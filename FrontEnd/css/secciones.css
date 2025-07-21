@@ -1,25 +1,27 @@
-/* 🌐 Layout general */
+/* Fondo de la página de secciones */
 body {
     margin: 0;
     padding: 0;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f8;
-    color: #333;
+    background-color: #1E1E1E; /* Fondo oscuro */
+    color: #fff; /* Color de texto blanco */
 }
 
 .container {
     max-width: 1200px;
     margin: 30px auto;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
 }
 
 /* 🔥 Título principal */
 h1 {
     text-align: center;
-    color: #0077cc;
+    color: #FF7043;
     margin-bottom: 25px;
     display: flex;
     align-items: center;
@@ -43,24 +45,42 @@ h1::before {
 
 .filter-section label {
     font-weight: 500;
-    margin-right: 8px;
+    color: #fff;
+}
+
+/* 🔘 Campo de búsqueda */
+#buscar {
+    padding: 8px 12px;
+    border: 2px solid #FF7043;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    font-size: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#buscar:focus {
+    border-color: #FF7043;
+    box-shadow: 0 0 8px rgba(255, 112, 67, 0.4);
+    outline: none;
 }
 
 /* 🔘 Select moderno */
 select {
     padding: 8px 12px;
-    border: 2px solid #0077cc;
+    border: 2px solid #FF7043;
     border-radius: 8px;
     background-color: #f9f9f9;
     color: #333;
     font-size: 1rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 select:focus {
-    border-color: #005fa3;
-    box-shadow: 0 0 8px rgba(0, 95, 163, 0.4);
+    border-color: #FF7043;
+    box-shadow: 0 0 8px rgba(255, 112, 67, 0.4);
     outline: none;
 }
 
@@ -72,9 +92,10 @@ select:focus {
     margin-top: 20px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Eliminar filas intercaladas */
 .inventory-table th,
 .inventory-table td {
     padding: 12px 15px;
@@ -82,19 +103,26 @@ select:focus {
     text-align: center;
 }
 
+/* Estilo de encabezados */
 .inventory-table th {
-    background-color: #0077cc;
+    background-color: #FF7043;
     color: #fff;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
 
+/* Eliminar color alternado de las filas */
 .inventory-table tr:nth-child(even) {
-    background-color: #f8f9fa;
+    background-color: #1E1E1E; /* Fila con el mismo color de fondo que el resto */
+}
+
+/* Color de fondo homogéneo para las filas */
+.inventory-table tr {
+    background-color: #1E1E1E;
 }
 
 .inventory-table tr:hover {
-    background-color: #eef3f7;
+    background-color: #2c2c2c;
     transition: background-color 0.3s ease;
 }
 
@@ -127,103 +155,8 @@ button {
     padding: 6px 12px;
     border: none;
     border-radius: 6px;
-    color: #fff;
+    color: #100e0e;
     font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-}
-/* Estilo base para botones */
-button.activar,
-button.desactivar {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: #000; /* texto negro por defecto */
-    background-color: #e0e0e0; /* gris claro */
-}
-
-/* Hover estado */
-button.activar:hover {
-    background-color: #81c784; /* verde pastel hover */
-    color: #000;
-}
-
-button.desactivar:hover {
-    background-color: #ef9a9a; /* rojo pastel hover */
-    color: #000;
-}
-
-/* Seleccionado estado */
-button.activar.selected {
-    background-color: #00ff00; /* verde neón seleccionado */
-    color: #fff;
-}
-
-button.desactivar.selected {
-    background-color: #ff0000; /* rojo neón seleccionado */
-    color: #fff;
-}
-
-.notificacion {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #28a745; /* verde éxito */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    transform: translateY(-20px);
-    z-index: 1000;
-}
-.notificacion.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.filter-section {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-
-.filter-section label {
-    font-weight: 500;
-    color: #333;
-}
-
-.filter-section input[type="text"] {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
-    width: 250px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.filter-section input[type="text"]:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0,123,255,0.5);
-    outline: none;
-}
-
-.filter-section select {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.filter-section select:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0,123,255,0.5);
-    outline: none;
 }

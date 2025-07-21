@@ -2,26 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarUsuarios();
 
     // Evento del formulario para agregar usuario
-document.getElementById('formUsuario').addEventListener('submit', e => {
-    e.preventDefault();
-    const form = new FormData(e.target);
+    document.getElementById('formUsuario').addEventListener('submit', e => {
+        e.preventDefault();
+        const form = new FormData(e.target);
 
-    fetch('../../API/usuarioAPI.php', {  // Ruta correcta a la API
-        method: 'POST',
-        body: form
-    })
-    .then(res => res.json())
-    .then(data => {
-        alert(data.message);
-        if (data.success) {
-            e.target.reset();
-            cargarUsuarios();
-        }
+        fetch('../../API/usuarioAPI.php', {  // Ruta correcta a la API
+            method: 'POST',
+            body: form
+        })
+        .then(res => res.json())
+        .then(data => {
+            alert(data.message);
+            if (data.success) {
+                e.target.reset();
+                cargarUsuarios();
+            }
+        });
     });
-});
-
-
-
 });
 
 // Función para cargar los usuarios en la tabla
@@ -54,11 +51,7 @@ function cargarUsuarios() {
         });
 }
 
-
-
-
-
-
+// Función para eliminar usuarios
 function eliminarUsuario(id) {
     if (confirm('¿Seguro que quieres eliminar este usuario?')) {
         fetch(`../../API/usuarioAPI.php?id=${id}`, { method: 'DELETE' }) // Ruta a la API de eliminar usuario

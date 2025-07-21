@@ -1,5 +1,4 @@
 <?php
-$requireAdmin = true;
 require_once '../../BackEnd/proteger.php';
 ?>
 <!DOCTYPE html>
@@ -18,38 +17,36 @@ require_once '../../BackEnd/proteger.php';
         <div class="navbar-right">
             <span>👤 <?php echo htmlspecialchars($_SESSION['usuario']); ?> (<?php echo htmlspecialchars($_SESSION['rol']); ?>)</span>
             <a href="login.html" class="btn-logout">Cerrar Sesión</a>
-
         </div>
     </header>
 
     <main class="dashboard-main">
-    <div class="welcome-card">
-    <h2>Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario']); ?></h2>
+        <div class="welcome-card">
+            <h2>Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario']); ?></h2>
 
-    <div class="mini-card">
-        <a href="usuarios.php" class="card">
-            <h3>👥 Usuarios</h3>
-            <p>Gestiona los usuarios del sistema.</p>
-        </a>
-    </div>
+            <div class="mini-card">
+                <a href="inventario.php" class="card">
+                    <h3>📦 Inventario</h3>
+                    <p>Controla las piezas y existencias.</p>
+                </a>
+            </div>
 
-    <div class="mini-card">
-        <a href="inventario.php" class="card">
-            <h3>📦 Inventario</h3>
-            <p>Controla las piezas y existencias.</p>
-        </a>
-    </div>
+            <div class="mini-card">
+                <a href="secciones.php" class="card">
+                    <h3>📂 Secciones</h3>
+                    <p>Organiza las categorías de productos.</p>
+                </a>
+            </div>
 
-
-    <div class="mini-card">
-        <a href="secciones.php" class="card">
-            <h3>📂 Secciones</h3>
-            <p>Organiza las categorías de productos.</p>
-        </a>
-    </div>
-</div>
-
-</main>
-
+            <?php if ($_SESSION['rol'] === 'admin'): ?>
+                <div class="mini-card">
+                    <a href="usuarios.php" class="card">
+                        <h3>👥 Usuarios</h3>
+                        <p>Gestiona los usuarios del sistema.</p>
+                    </a>
+                </div>
+            <?php endif; ?>
+        </div>
+    </main>
 </body>
 </html>

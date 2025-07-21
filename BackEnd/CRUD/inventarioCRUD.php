@@ -25,12 +25,13 @@ class InventarioCRUD {
         $stmt->bindParam(':unidades', $unidades);
         $stmt->bindParam(':imagen', $imagen);
 
-        return $stmt->execute();
+        return $stmt->execute();  // Ejecutar la consulta
     } catch (PDOException $e) {
         error_log("Error en agregarParte: " . $e->getMessage());
         return false;
     }
 }
+
 
 
     public function obtenerPartes() {
@@ -95,9 +96,10 @@ class InventarioCRUD {
     }
 
     public function obtenerPartesActivas() {
-    $stmt = $this->conn->query("SELECT * FROM inventario_partes WHERE activo = 1");
+    $stmt = $this->conn->query("SELECT * FROM inventario_partes WHERE activo = 1 ORDER BY nombre_parte ASC");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
 
 }
 ?>
