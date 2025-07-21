@@ -2,50 +2,151 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f8;
-    color: #333;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('../../img/fondoinventario.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
 }
 
+/* 🌟 Header premium */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    margin: 20px auto;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-left .usuario {
+    font-size: 1rem;
+    color: #FF7043;
+    font-weight: bold;
+}
+
+.header-center {
+    flex: 1;
+    text-align: center;
+}
+
+.header-center h1 {
+    margin: 0;
+    color: #FF7043;
+    font-size: 1.8rem;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-logout {
+    background-color: #FF7043;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: #E64A19;
+}
+
+.cart-btn {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    color: #FF7043;
+    padding: 8px 15px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-btn:hover {
+    background: #FF7043;
+    color: #fff;
+}
+
+.cart-btn #cart-count {
+    background: #E64A19;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8rem;
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    color: #fff;
+}
+
+/* 📦 Contenedor principal */
 .container {
     max-width: 1200px;
     margin: 30px auto;
     padding: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
-h1 {
-    text-align: center;
-    color: #007bff;
-    margin-bottom: 30px;
-}
-
+/* 🏷️ Grid de productos */
 .grid-productos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 }
 
+/* 🪧 Tarjetas */
+.card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
 .card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #fff;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
 }
 
 .card-img img, .card .no-img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
-    background: #e9ecef;
+    background: #333;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #6c757d;
+    color: #ccc;
     font-size: 1rem;
 }
 
@@ -55,11 +156,41 @@ h1 {
 
 .card-body h2 {
     margin: 0 0 10px;
-    color: #007bff;
-    font-size: 1.2rem;
+    color: #FF7043;
+    font-size: 1.3rem;
 }
 
 .card-body p {
     margin: 5px 0;
-    font-size: 0.95rem;
+    font-size: 1rem;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .header-right {
+        justify-content: center;
+    }
+}
+
+.toast.success {
+    background: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+    animation: fadeOut 4s forwards;
+}
+
+@keyframes fadeOut {
+    0% {opacity: 1;}
+    80% {opacity: 1;}
+    100% {opacity: 0;}
 }

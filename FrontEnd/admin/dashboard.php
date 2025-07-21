@@ -17,26 +17,39 @@ require_once '../../BackEnd/proteger.php';
         </div>
         <div class="navbar-right">
             <span>👤 <?php echo htmlspecialchars($_SESSION['usuario']); ?> (<?php echo htmlspecialchars($_SESSION['rol']); ?>)</span>
-            <a href="../../BackEnd/logout.php" class="btn-logout">Cerrar Sesión</a>
+            <a href="login.html" class="btn-logout">Cerrar Sesión</a>
+
         </div>
     </header>
 
     <main class="dashboard-main">
-        <h2>Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario']); ?></h2>
-        <div class="cards-container">
-            <a href="usuarios.php" class="card">
-                <h3>Usuarios</h3>
-                <p>Gestionar Usuarios</p>
-            </a>
-            <a href="inventario.php" class="card">
-                <h3>Inventario</h3>
-                <p>Gestionar Inventario</p>
-            </a>
-            <a href="secciones.php" class="card">
-                <h3>Secciones</h3>
-                <p>Gestionar Secciones</p>
-            </a>
-        </div>
-    </main>
+    <div class="welcome-card">
+    <h2>Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario']); ?></h2>
+
+    <div class="mini-card">
+        <a href="usuarios.php" class="card">
+            <h3>👥 Usuarios</h3>
+            <p>Gestiona los usuarios del sistema.</p>
+        </a>
+    </div>
+
+    <div class="mini-card">
+        <a href="inventario.php" class="card">
+            <h3>📦 Inventario</h3>
+            <p>Controla las piezas y existencias.</p>
+        </a>
+    </div>
+
+
+    <div class="mini-card">
+        <a href="secciones.php" class="card">
+            <h3>📂 Secciones</h3>
+            <p>Organiza las categorías de productos.</p>
+        </a>
+    </div>
+</div>
+
+</main>
+
 </body>
 </html>

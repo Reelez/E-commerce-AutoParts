@@ -136,141 +136,18 @@ h1::before {
     transition: background-color 0.3s ease;
 }
 
-.fila-desactivada {
-    background-color: #ffe6e6;
-    color: #a94442;
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
-.badge-activo {
-    background-color: #28a745;
-    color: white;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: bold;
+.card-link {
+    text-decoration: none; /* Quita el subrayado */
+    color: inherit;        /* Hereda color del contenedor */
+    display: block;        /* Hace que ocupe todo el espacio */
 }
 
-.badge-inactivo {
-    background-color: #dc3545;
-    color: white;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-.desactivado {
-    background-color: #f8d7da;
-    color: #721c24;
-    text-decoration: line-through;
-}
-
-.fila-desactivada {
-    background-color: #f2f2f2;
-    color: #999;
-}
-
-.badge-activo {
-    color: green;
-}
-.badge-inactivo {
-    color: red;
-}
-
-.fila-desactivada {
-    background-color: #f9f9f9;
-    color: #999;
-}
-.badge-activo {
-    background-color: #28a745;
-    color: white;
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-.badge-inactivo {
-    background-color: #dc3545;
-    color: white;
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-/* 🔥 Modernizar selects */
-select {
-    padding: 8px 12px;
-    border: 2px solid #0077cc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    color: #333;
-    font-size: 1rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-select:focus {
-    border-color: #005fa3;
-    box-shadow: 0 0 8px rgba(0, 95, 163, 0.4);
-    outline: none;
-}
-
-/* 🎯 Modernizar botones Activar/Desactivar */
-button {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover {
-    transform: translateY(-1px);
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
-button.activar {
-    background-color: #28a745; /* verde */
-}
-
-button.activar:hover {
-    background-color: #218838;
-}
-
-button.desactivar {
-    background-color: #dc3545; /* rojo */
-}
-
-button.desactivar:hover {
-    background-color: #c82333;
-}
-
-/* 💎 Chips de estado */
-.badge-activo {
-    background-color: #28a745;
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
-
-.badge-inactivo {
-    background-color: #6c757d;
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.85rem;
-    font-weight: 500;
+.card-link:visited {
+    color: inherit; /* Quita color morado de enlaces visitados */
 }

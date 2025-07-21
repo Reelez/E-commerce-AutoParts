@@ -1,0 +1,113 @@
+body.registro-body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            url('../../img/fondoresgistro.jpg') no-repeat center center fixed;
+background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.registro-container {
+    position: fixed; /* fijo en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* centra perfectamente */
+    
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 35px 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    color: #fff;
+    text-align: center;
+}
+
+
+.registro-container h2 {
+    margin-bottom: 20px;
+    color: #FF7043;
+}
+
+.registro-container label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.registro-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.registro-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FF7043;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.registro-container button:hover {
+    background-color: #E64A19;
+}
+
+.login-link {
+    margin-top: 15px;
+    color: #ccc;
+}
+
+.login-link a {
+    color: #FF7043;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+body.registro-body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* evita scroll lateral */
+    display: block;
+    height: 100vh;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('../../img/fondoresgistro.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+.registro-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 35px 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto; /* asegura que no tenga desplazamiento */
+}
+
+html, body {
+    overflow-x: hidden;
+}
+

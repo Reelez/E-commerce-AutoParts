@@ -34,10 +34,11 @@ class InventarioCRUD {
 
 
     public function obtenerPartes() {
-        $sql = "SELECT * FROM inventario_partes";
-        $stmt = $this->conn->query($sql);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    $sql = "SELECT * FROM inventario_partes";
+    $stmt = $this->conn->query($sql);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
     public function eliminarParte($id) {
         $sql = "DELETE FROM inventario_partes WHERE id = :id";

@@ -1,33 +1,60 @@
-/* --- Index Page Styles --- */
-body.index-body {
+body.welcome-body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../img/fondoindex.jpg') no-repeat center center fixed;
+
+background-size: cover;
+
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #0077cc, #00c3ff);
-    font-family: Arial, sans-serif;
-    color: #fff;
 }
 
 .welcome-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 40px 30px;
     text-align: center;
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
 .welcome-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #FF7043;
 }
 
-.btn-primary {
-    background-color: #fff;
-    color: #0077cc;
-    padding: 12px 24px;
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    background-color: #FF7043;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
     text-decoration: none;
-    border-radius: 5px;
+    font-size: 1.1rem;
     font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-primary:hover {
-    background-color: #f0f0f0;
-    color: #005fa3;
+.btn:hover {
+    background-color: #E64A19;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #FFA07A;
+}
+
+.btn-secondary:hover {
+    background-color: #FF7043;
 }
